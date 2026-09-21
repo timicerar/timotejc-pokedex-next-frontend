@@ -1,9 +1,38 @@
+'use client';
+
+import { usePokemon } from '~/api/pokemon/hooks';
+import Container from '~/components/components/Container/Container';
+import NotFound from '~/components/compositions/NotFound/NotFound';
+import PokemonDetails from '~/components/compositions/PokemonDetails/PokemonDetails';
+import PokemonDetailsSkeleton from '~/components/compositions/PokemonDetails/PokemonDetailsSkeleton/PokemonDetailsSkeleton';
+import { NotFoundTypes } from '~/constants/not-found';
+
 type PokemonDetailsPageProps = {
   pokemon: string;
 };
 
-const PokemonDetailsPage = ({ pokemon }: PokemonDetailsPageProps) => {
-  return <>Pokemon Details Page: {pokemon}</>;
+const PokemonDetailsPage = ({
+  pokemon: pokemonName,
+}: PokemonDetailsPageProps) => {
+  const {
+    data: pokemon,
+    isLoading,
+    isError,
+  } = usePokemon({ name: pokemonName || '' });
+
+  if (isLoading) {
+    return <PokemonDetailsSkeleton />;
+  }
+
+  if (isError || !pokemon) {
+    return (
+      <Container center>
+        <NotFound type={NotFoundTypes.POKEMON_DETAILS} />
+      </Container>
+    );
+  }
+
+  return <PokemonDetails pokemon={pokemon} />;
 };
 
 export default PokemonDetailsPage;
