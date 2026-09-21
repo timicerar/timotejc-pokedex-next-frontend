@@ -1,3 +1,4 @@
+import path from 'node:path';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
@@ -57,6 +58,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  sassOptions: {
+    loadPaths: [path.join(process.cwd())],
+  },
   async headers() {
     return [
       {

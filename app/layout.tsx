@@ -1,16 +1,26 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Press_Start_2P, Rubik, VT323 } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
+import ThemeProvider from '~/components/providers/ThemeProvider/ThemeProvider';
 import { DEFAULT_LOCALE } from '~/constants/locales';
+import '~/styles/tokens.css';
 import '~/styles/global.scss';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const pressStart2P = Press_Start_2P({
+  variable: '--font-display',
+  weight: '400',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const rubik = Rubik({
+  variable: '--font-body',
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+});
+
+const vt323 = VT323({
+  variable: '--font-mono',
+  weight: '400',
   subsets: ['latin'],
 });
 
@@ -36,10 +46,13 @@ const RootLayout = ({ children }: LayoutProps<'/'>) => {
   return (
     <html
       lang={DEFAULT_LOCALE}
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+      className={`${pressStart2P.variable} ${rubik.variable} ${vt323.variable}`}
     >
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

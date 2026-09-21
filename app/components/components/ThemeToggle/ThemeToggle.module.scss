@@ -1,0 +1,33 @@
+@use 'app/styles/mixins' as *;
+
+.toggle {
+  @include mq('sm') {
+    @include button-rounded('sm');
+  }
+}
+
+.label {
+  @include mq('sm') {
+    display: none;
+  }
+}
+
+.icon {
+  display: none;
+}
+
+.icon--light {
+  color: var(--type-fire);
+}
+
+.icon--dark {
+  color: var(--secondary);
+}
+
+:global(html[data-theme='light']) .icon--light {
+  display: inline;
+}
+
+:global(html[data-theme='dark']) .icon--dark {
+  display: inline;
+}
