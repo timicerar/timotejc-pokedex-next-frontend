@@ -1,7 +1,5 @@
-'use client';
-
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 type UseInfiniteVirtualizerOptions = {
   itemCount: number;
@@ -37,6 +35,13 @@ export const useInfiniteVirtualizer = ({
   });
 
   const virtualRows = rowVirtualizer.getVirtualItems();
+  const isRequestingNextPageRef = useRef(false);
+
+  useEffect(() => {
+    if (!isFetchingNextPage) {
+      isRequestingNextPageRef.current = false;
+    }
+  }, [isFetchingNextPage]);
 
   useEffect(() => {
     const lastVirtualRow = virtualRows[virtualRows.length - 1];
@@ -46,8 +51,10 @@ export const useInfiniteVirtualizer = ({
     if (
       lastVirtualRow.index >= rowCount - 1 &&
       hasNextPage &&
-      !isFetchingNextPage
+      !isFetchingNextPage &&
+      !isRequestingNextPageRef.current
     ) {
+      isRequestingNextPageRef.current = true;
       fetchNextPage();
     }
   }, [virtualRows, rowCount, hasNextPage, isFetchingNextPage, fetchNextPage]);

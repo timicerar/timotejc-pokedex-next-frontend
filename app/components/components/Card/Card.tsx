@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ElementType } from 'react';
+import type { ElementType, Ref } from 'react';
 import { forwardRef } from 'react';
 import type { CardProps } from '~/components/components/Card/Card.interface';
 import { CardPaddings } from '~/constants/card';
@@ -24,7 +24,7 @@ const Card = forwardRef<HTMLElement, CardProps>(
 
     return (
       <Element
-        ref={ref as React.Ref<HTMLButtonElement & HTMLDivElement>}
+        ref={ref as Ref<HTMLButtonElement & HTMLDivElement>}
         type={interactive ? 'button' : undefined}
         onClick={onClick}
         className={classNames(
