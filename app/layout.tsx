@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
+import ModalProvider from '~/components/providers/ModalProvider/ModalProvider';
 import ThemeProvider from '~/components/providers/ThemeProvider/ThemeProvider';
 import { DEFAULT_LOCALE } from '~/constants/locales';
 import { fontVariables } from '~/lib/fonts';
@@ -22,7 +23,10 @@ const RootLayout = ({ children }: LayoutProps<'/'>) => {
     >
       <body>
         <ThemeProvider>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {children}
+            <ModalProvider />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,13 +1,12 @@
-import { getTranslations } from 'next-intl/server';
+import type { useTranslations } from 'next-intl';
 import type { NotFoundData } from '~/components/compositions/NotFound/NotFound.interface';
 import { type NotFoundType, NotFoundTypes } from '~/constants/not-found';
 import { Routes } from '~/constants/routes';
 
-export const getNotFoundData = async (
+export const getNotFoundData = (
   type: NotFoundType,
-): Promise<NotFoundData> => {
-  const t = await getTranslations();
-
+  t: ReturnType<typeof useTranslations>,
+): NotFoundData => {
   switch (type) {
     case NotFoundTypes.POKEMON_DETAILS:
       return {
