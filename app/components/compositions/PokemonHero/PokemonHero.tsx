@@ -59,6 +59,7 @@ const PokemonHero = ({ pokemon }: PokemonHeroProps) => {
           height={imageSize}
           className={classes.image}
           preload
+          fetchPriority="high"
         />
         <div className={classes.wrapper}>
           <Typography type={TypographyTypes.ID_LABEL} color="muted-foreground">

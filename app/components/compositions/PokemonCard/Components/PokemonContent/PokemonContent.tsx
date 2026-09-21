@@ -59,6 +59,7 @@ const PokemonContent = ({
         height={imageSize}
         className={classes.image}
         preload={priority}
+        fetchPriority={priority ? 'high' : undefined}
       />
       <div className={classes.wrapper}>
         <Typography type={TypographyTypes.CARD_TITLE} className={classes.name}>
