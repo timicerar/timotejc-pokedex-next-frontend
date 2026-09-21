@@ -1,16 +1,20 @@
 import path from 'node:path';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import { env } from '~/constants/env';
+
+const apiUrl = env('NEXT_PUBLIC_API_URL');
+const serveImagesUrl = env('NEXT_PUBLIC_SERVE_IMAGES_URL');
 
 const cspHeader = `
     default-src 'self';
-    connect-src 'self';
+    connect-src 'self' blob: data: ${apiUrl};
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src 'self' blob: data: ${serveImagesUrl};
     font-src 'self';
     worker-src 'self' blob:;
-    object-src 'none';
+    object-src 'none' data: ${serveImagesUrl};
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
