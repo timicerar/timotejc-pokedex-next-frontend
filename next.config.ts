@@ -5,10 +5,11 @@ import { env } from '~/constants/env';
 
 const apiUrl = env('NEXT_PUBLIC_API_URL');
 const serveImagesUrl = env('NEXT_PUBLIC_SERVE_IMAGES_URL');
+const apiOrigin = apiUrl ? new URL(apiUrl).origin : '';
 
 const cspHeader = `
     default-src 'self';
-    connect-src 'self' blob: data: ${apiUrl};
+    connect-src 'self' blob: data: ${apiOrigin};
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: ${serveImagesUrl};

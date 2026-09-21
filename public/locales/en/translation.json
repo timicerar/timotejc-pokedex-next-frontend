@@ -31,7 +31,7 @@
     "clearFilters": "Clear filters"
   },
   "pokemonCard": {
-    "viewDetails": "View details for {{name}}"
+    "viewDetails": "View details for {name}"
   },
   "theme": {
     "toggle": "Toggle theme",
@@ -126,8 +126,8 @@
     "weight": "Weight",
     "abilities": "Abilities",
     "pokedexEntry": "Pokédex Entry",
-    "movePower": "PWR {{power}}",
-    "generation": "{{generation}} — {{region}}",
+    "movePower": "PWR {power}",
+    "generation": "{generation} — {region}",
     "tabs": {
       "about": "About",
       "baseStats": "Base Stats",
@@ -163,6 +163,6 @@
     "back-shiny": "Back (Shiny)",
     "previous": "Previous sprite",
     "next": "Next sprite",
-    "goToSlide": "Go to sprite {{index}}"
+    "goToSlide": "Go to sprite {index}"
   }
 }

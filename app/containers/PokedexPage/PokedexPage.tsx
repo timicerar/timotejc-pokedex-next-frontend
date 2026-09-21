@@ -1,41 +1,18 @@
-'use client';
-
-import Button from '~/components/components/Button/Button';
-import { ModalTypes } from '~/constants/modal-provider';
-import { openModal } from '~/store/modals';
+import { Suspense } from 'react';
+import Container from '~/components/components/Container/Container';
+import PokemonList from '~/components/compositions/PokemonList/PokemonList';
+import PokemonListSkeleton from '~/components/compositions/PokemonList/PokemonListSkeleton';
+import ScrollToTop from '~/components/compositions/ScrollToTop/ScrollToTop';
+import { Breakpoints } from '~/constants/breakpoints';
 
 const PokedexPage = () => {
   return (
-    <>
-      Pokedex Page
-      <Button
-        onClick={() =>
-          openModal({
-            type: ModalTypes.POKEMON_DETAILS,
-            data: { name: 'pikachu' },
-          })
-        }
-      >
-        Open Pokemon Details Modal
-      </Button>
-      <Button
-        onClick={() =>
-          openModal({ type: ModalTypes.POKEMON_DETAILS, data: { name: '' } })
-        }
-      >
-        Open Empty Pokemon Details Modal
-      </Button>
-      <Button
-        onClick={() =>
-          openModal({
-            type: ModalTypes.CONFIRMATION,
-            data: { onConfirm: () => console.log('confirmed') },
-          })
-        }
-      >
-        Open Confirmation Modal
-      </Button>
-    </>
+    <Container maxWidth={Breakpoints.xl}>
+      <Suspense fallback={<PokemonListSkeleton />}>
+        <PokemonList />
+      </Suspense>
+      <ScrollToTop />
+    </Container>
   );
 };
 

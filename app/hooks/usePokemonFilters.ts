@@ -2,22 +2,17 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
+import type { PokemonFilters } from '~/api/models/PokemonFilters';
 import type { PokemonGeneration } from '~/constants/pokemon-generations';
 import type { PokemonType } from '~/constants/pokemon-types';
 import { parseList, serializeList } from '~/utils/filterUtils';
-
-export type PokemonFiltersState = {
-  search?: string;
-  type?: PokemonType[];
-  generation?: PokemonGeneration[];
-};
 
 export const usePokemonFilters = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const filters = useMemo<PokemonFiltersState>(
+  const filters = useMemo<PokemonFilters>(
     () => ({
       search: searchParams.get('search') ?? '',
       type: parseList<PokemonType>(searchParams.get('type')),
