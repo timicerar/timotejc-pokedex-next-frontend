@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import PokemonDetailsPage from '~/containers/PokemonDetailsPage/PokemonDetailsPage';
 import { buildMetadata } from '~/lib/metadata';
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -8,12 +9,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return buildMetadata({ title: t('title'), description: t('description') });
 };
 
-const PokemonDetailsPage = async ({
-  params,
-}: PageProps<'/pokemon/[pokemon]'>) => {
+const PokemonDetails = async ({ params }: PageProps<'/pokemon/[pokemon]'>) => {
   const { pokemon } = await params;
 
-  return <h1>Pokemon Details: {pokemon}</h1>;
+  return <PokemonDetailsPage pokemon={pokemon} />;
 };
 
-export default PokemonDetailsPage;
+export default PokemonDetails;

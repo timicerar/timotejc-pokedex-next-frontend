@@ -1,16 +1,7 @@
-import { useTranslations } from 'next-intl';
-import ThemeToggle from '~/components/components/ThemeToggle/ThemeToggle';
-import Typography from '~/components/components/Typography/Typography';
+import PokedexPage from '~/containers/PokedexPage/PokedexPage';
 
-const PokedexPage = () => {
-  const t = useTranslations();
-
-  return (
-    <>
-      <Typography>{t('shared.pokedex')}</Typography>
-      <ThemeToggle showLabel />
-    </>
-  );
+const Pokedex = () => {
+  return <PokedexPage />;
 };
 
-export default PokedexPage;
+export default Pokedex;
