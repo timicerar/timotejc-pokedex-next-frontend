@@ -6,21 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "typecheck": "next typegen && tsc",
+    "tsc": "tsc --noEmit",
+    "lint": "biome lint",
+    "check": "biome check",
+    "check:prettier": "prettier --check \"**/*.{scss,css}\"",
+    "format": "biome format --write",
+    "format:prettier": "prettier --write \"**/*.{scss,css}\""
   },
   "dependencies": {
-    "next": "16.3.5",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "next": "~16.3.5",
+    "next-intl": "~4.14.5",
+    "react": "~19.2.8",
+    "react-dom": "~19.2.8"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.3.5",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@biomejs/biome": "~2.5.14",
+    "@types/node": "~20.19.43",
+    "@types/prettier": "~3.0.0",
+    "@types/react": "~19.3.0",
+    "@types/react-dom": "~19.3.0",
+    "prettier": "~3.9.8",
+    "sass": "~1.104.1",
+    "typescript": "~5.9.3"
   }
 }
