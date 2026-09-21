@@ -1,0 +1,24 @@
+@use 'app/styles/mixins' as *;
+
+.logo {
+  display: inline-flex;
+}
+
+.image {
+  display: none;
+  width: 100%;
+  max-width: 140px;
+  height: auto;
+
+  @include mq(sm) {
+    max-width: 110px;
+  }
+}
+
+:global(html[data-theme='light']) .image--light {
+  display: block;
+}
+
+:global(html[data-theme='dark']) .image--dark {
+  display: block;
+}

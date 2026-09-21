@@ -14,7 +14,7 @@ const cspHeader = `
     img-src 'self' blob: data: ${serveImagesUrl};
     font-src 'self';
     worker-src 'self' blob:;
-    object-src 'none' data: ${serveImagesUrl};
+    object-src data: ${serveImagesUrl};
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
@@ -64,6 +64,11 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   sassOptions: {
     loadPaths: [path.join(process.cwd())],
+  },
+  images: {
+    remotePatterns: serveImagesUrl
+      ? [{ hostname: new URL(serveImagesUrl).hostname }]
+      : [],
   },
   async headers() {
     return [

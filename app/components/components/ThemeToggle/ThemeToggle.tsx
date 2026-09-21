@@ -2,6 +2,7 @@
 
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -42,11 +43,11 @@ const ThemeToggle = ({ showLabel = false }: ThemeToggleProps) => {
         <>
           <FontAwesomeIcon
             icon={faSun}
-            className={`${classes.icon} ${classes['icon--light']}`}
+            className={classNames(classes.icon, classes['icon--light'])}
           />
           <FontAwesomeIcon
             icon={faMoon}
-            className={`${classes.icon} ${classes['icon--dark']}`}
+            className={classNames(classes.icon, classes['icon--dark'])}
           />
         </>
       }
