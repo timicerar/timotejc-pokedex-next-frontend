@@ -5,6 +5,7 @@ import classes from './Container.module.scss';
 const Container = ({
   center,
   maxWidth,
+  fullHeight,
   className,
   style,
   children,
@@ -14,7 +15,11 @@ const Container = ({
     <div
       className={classNames(
         classes.container,
-        { [classes.center]: center, [classes.hasMaxWidth]: maxWidth },
+        {
+          [classes.center]: center,
+          [classes.fullHeight]: fullHeight,
+          [classes.hasMaxWidth]: maxWidth,
+        },
         className,
       )}
       style={{ ...(maxWidth !== undefined && { maxWidth }), ...style }}

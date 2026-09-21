@@ -12,4 +12,5 @@ export type ButtonProps = Omit<
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
   children?: ReactNode;
+  href?: string;
 };

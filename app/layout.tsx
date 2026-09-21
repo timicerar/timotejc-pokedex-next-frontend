@@ -4,6 +4,8 @@ import ThemeProvider from '~/components/providers/ThemeProvider/ThemeProvider';
 import { DEFAULT_LOCALE } from '~/constants/locales';
 import { fontVariables } from '~/lib/fonts';
 import { buildMetadata } from '~/lib/metadata';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import '~/lib/fontawesome';
 import '~/styles/tokens.css';
 import '~/styles/global.scss';
 

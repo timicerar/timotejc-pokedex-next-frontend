@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import Container from '~/components/components/Container/Container';
+import NotFound from '~/components/compositions/NotFound/NotFound';
+import { NotFoundTypes } from '~/constants/not-found';
 import { buildMetadata } from '~/lib/metadata';
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -9,7 +12,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
 };
 
 const NotFoundPage = () => {
-  return <h1>Page Not Found</h1>;
+  return (
+    <Container center fullHeight>
+      <NotFound type={NotFoundTypes.GENERIC} />
+    </Container>
+  );
 };
 
 export default NotFoundPage;
