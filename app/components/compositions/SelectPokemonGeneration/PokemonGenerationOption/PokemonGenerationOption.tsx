@@ -13,10 +13,9 @@ const PokemonGenerationOption = ({
     <span
       className={classNames(classes.option, { [classes.selected]: selected })}
     >
-      <FontAwesomeIcon
-        icon={faCheck}
-        className={classNames(classes.check, { [classes.visible]: selected })}
-      />
+      <span className={classes.check}>
+        {selected && <FontAwesomeIcon icon={faCheck} />}
+      </span>
       <Typography as="span" type="body-sm">
         {option.label}
       </Typography>

@@ -11,10 +11,9 @@ const PokemonTypeOption = ({ option, selected }: PokemonTypeOptionProps) => {
     <span
       className={classNames(classes.option, { [classes.selected]: selected })}
     >
-      <FontAwesomeIcon
-        icon={faCheck}
-        className={classNames(classes.check, { [classes.visible]: selected })}
-      />
+      <span className={classes.check}>
+        {selected && <FontAwesomeIcon icon={faCheck} />}
+      </span>
       <PokemonTypeDot color={option.color} />
       <Typography as="span" type="body-sm">
         {option.label}

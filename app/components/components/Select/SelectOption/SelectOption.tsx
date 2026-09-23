@@ -26,12 +26,9 @@ const SelectOption = <T extends SelectOptionData = SelectOptionData>({
         renderOption(option, { selected })
       ) : (
         <>
-          <FontAwesomeIcon
-            icon={faCheck}
-            className={classNames(classes.check, {
-              [classes.visible]: selected,
-            })}
-          />
+          <span className={classes.check}>
+            {selected && <FontAwesomeIcon icon={faCheck} />}
+          </span>
           {option.leadingIcon && (
             <span className={classes.optionIcon}>{option.leadingIcon}</span>
           )}
