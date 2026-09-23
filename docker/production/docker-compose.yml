@@ -1,5 +1,6 @@
 services:
   web:
+    container_name: pokedex-next-frontend-production
     build:
       context: ../..
       dockerfile: docker/production/Dockerfile
