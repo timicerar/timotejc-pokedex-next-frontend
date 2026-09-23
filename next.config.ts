@@ -10,7 +10,7 @@ const cspHeader = `
     img-src 'self' blob: data: https://raw.githubusercontent.com;
     font-src 'self';
     worker-src 'self' blob:;
-    object-src data: https://raw.githubusercontent.com;
+    object-src 'self' data: https://raw.githubusercontent.com;
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
