@@ -1,21 +1,16 @@
 import path from 'node:path';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
-import { env } from '~/constants/env';
-
-const apiUrl = env('NEXT_PUBLIC_API_URL');
-const serveImagesUrl = env('NEXT_PUBLIC_SERVE_IMAGES_URL');
-const apiOrigin = apiUrl ? new URL(apiUrl).origin : '';
 
 const cspHeader = `
     default-src 'self';
-    connect-src 'self' blob: data: ${apiOrigin};
+    connect-src 'self' blob: data: https://pokeapi.co;
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: ${serveImagesUrl};
+    img-src 'self' blob: data: https://raw.githubusercontent.com;
     font-src 'self';
     worker-src 'self' blob:;
-    object-src data: ${serveImagesUrl};
+    object-src data: https://raw.githubusercontent.com;
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
@@ -63,13 +58,14 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   sassOptions: {
     loadPaths: [path.join(process.cwd())],
   },
   images: {
-    remotePatterns: serveImagesUrl
-      ? [{ hostname: new URL(serveImagesUrl).hostname }]
-      : [],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'raw.githubusercontent.com' },
+    ],
   },
   async headers() {
     return [

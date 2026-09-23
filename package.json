@@ -12,7 +12,9 @@
     "check": "biome check",
     "check:prettier": "prettier --check \"**/*.{scss,css}\"",
     "format": "biome format --write",
-    "format:prettier": "prettier --write \"**/*.{scss,css}\""
+    "format:prettier": "prettier --write \"**/*.{scss,css}\"",
+    "docker:dev": "docker compose -f docker/development/docker-compose.yml up --build",
+    "docker:prod": "docker compose -f docker/production/docker-compose.yml up --build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "~7.3.1",

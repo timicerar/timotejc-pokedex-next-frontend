@@ -22,6 +22,9 @@ const RootLayout = ({ children }: LayoutProps<'/'>) => {
       suppressHydrationWarning
       className={fontVariables}
     >
+      <head>
+        <script src="/api/env/config" />
+      </head>
       <body>
         <ThemeProvider>
           <QueryProvider>

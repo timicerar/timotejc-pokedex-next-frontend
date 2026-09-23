@@ -1,0 +1,33 @@
+# dependencies (installed inside the image)
+node_modules
+
+# next.js build output
+.next
+out
+
+# env files - pass secrets at runtime, not in the build context
+.env
+.env*.local
+
+# git
+.git
+.gitignore
+
+# ide
+.idea
+.vscode
+
+# docker
+docker
+.dockerignore
+Dockerfile*
+docker-compose*.yml
+docker-compose*.yaml
+compose*.yml
+compose*.yaml
+
+# misc
+README.md
+*.tsbuildinfo
+npm-debug.log*
+.DS_Store
