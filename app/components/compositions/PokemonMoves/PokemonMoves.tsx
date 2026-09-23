@@ -29,8 +29,6 @@ const PokemonMoves = ({ pokemon }: PokemonMovesProps) => {
     gap: 16,
   });
 
-  virtualizer.shouldAdjustScrollPositionOnItemSizeChange = () => false;
-
   return (
     <div
       className={classes.list}
