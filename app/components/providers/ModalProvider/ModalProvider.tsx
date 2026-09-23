@@ -1,7 +1,31 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+import { useCallback, useEffect, useRef } from 'react';
 import ConfirmationModal from '~/components/compositions/Modals/ConfirmationModal/ConfirmationModal';
 import PokemonDetailsModal from '~/components/compositions/Modals/PokemonDetailsModal/PokemonDetailsModal';
+import { ModalTypes } from '~/constants/modal-provider';
+import { closeModal } from '~/store/modals';
 
 const ModalProvider = () => {
+  const pathname = usePathname();
+  const isFirstRender = useRef(true);
+
+  const closeAllModals = useCallback(() => {
+    for (const type of Object.values(ModalTypes)) {
+      closeModal(type);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    closeAllModals();
+  }, [pathname, closeAllModals]);
+
   return (
     <>
       <PokemonDetailsModal />
