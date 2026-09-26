@@ -1,3 +1,5 @@
+'use client';
+
 import { faHome } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
