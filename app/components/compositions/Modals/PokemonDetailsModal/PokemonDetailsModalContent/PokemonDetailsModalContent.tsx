@@ -25,7 +25,9 @@ import type { PokemonType } from '~/constants/pokemon-types';
 import { Routes } from '~/constants/routes';
 import { TypographyTypes } from '~/constants/typography';
 import { useMediaQuery } from '~/hooks/useMediaQuery';
+import { usePokemonImageMode } from '~/hooks/usePokemonImageMode';
 import { closeModal } from '~/store/modals';
+import { getPrimaryPokemonImage } from '~/utils/pokemonSpriteUtils';
 import classes from '../PokemonDetailsModal.module.scss';
 
 type PokemonDetailsModalContentProps = {
@@ -38,6 +40,7 @@ const PokemonDetailsModalContent = ({
   const t = useTranslations();
   const router = useRouter();
   const isMobile = useMediaQuery('sm');
+  const { lowerResImg } = usePokemonImageMode();
 
   const {
     data: pokemon,
@@ -59,10 +62,7 @@ const PokemonDetailsModalContent = ({
     return <PokemonDetailsModalError />;
   }
 
-  const image =
-    pokemon.sprites?.other?.['official-artwork']?.front_default ??
-    pokemon.sprites?.front_default ??
-    '';
+  const image = getPrimaryPokemonImage(pokemon, lowerResImg);
   const imageSize = isMobile
     ? MOBILE_POKEMON_IMAGE_SIZE
     : DESKTOP_POKEMON_IMAGE_SIZE;
